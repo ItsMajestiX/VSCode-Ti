@@ -1,0 +1,46 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ez80-Assembler",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#supports"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.semicolon.ez80-asm",
+				"begin": ";",
+				"end": "\\n"
+			},
+			{
+				"name": "comment.block.ez80-asm",
+				"begin": "#comment",
+				"end": "#endcomment"
+			}]
+		},
+		"constants": {
+			"patterns": [{
+				"name": "constant.numeric.ez80-asm",
+				"match": "(\\d)|($[0-9A-Fa-f])|(%[0-1])"
+			}]
+		},
+		"supports": {
+			"patterns": [{
+				"name": "support.function.ez80-asm",
+				"match": "\\b(adc|add|and|bit|call|ccf|cp|cpd|cpdr|cpi|cpir|cpl|daa|dec|di|djnz|ei|ex|exx|halt|im|inc|jp|jr|ld|ldd|lddr|ldi|ldir|lea|mlt|neg|nop|or|pea|pop|push|res|ret|reti|retn|rl|rla|rlc|rlca|rld|rr|rra|rrc|rrca|rrd|rsmix|rst|sbc|scf|set|sla|slp|sra|srl|stmix|sub|tst|xor|in|in0|ind|ind2|ind2r|indm|indmr|indr|indrx|ini|ini2|ini2r|inim|inimr|inir|inirx|otdm|otdmr|otdrx|otim|otimr|otirx|out|out0|outd|outd2|outd2r|outdr|outi|outi2|outi2r|outir|tstio)\\b"
+			},
+			{
+				"name": "support.variable.ez80-asm",
+				"match": "\\b(a|af|b|bc|c|d|de|e|h|hl|i|ix|iy|l|r|hx|hy|ixh|ixl|sll|iyh|iyl|lx|l)\\b"
+			}]
+		}
+	},
+	"scopeName": "source.asm"
+}

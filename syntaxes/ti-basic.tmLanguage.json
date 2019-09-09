@@ -1,0 +1,52 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Ti-BASIC",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#supports"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.ti-basic",
+				"match": "(If|While|For|Repeat|End)"
+			},
+			{
+				"name": "keyword.operator.ti-basic",
+				"match": "(and|or|xor)"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.ti-basic",
+			"begin": "\"",
+			"end": "\""
+		},
+		"constants": {
+			"patterns": [{
+				"name": "constant.numeric.ti-basic",
+				"match": "^-?\\d*\\.?\\d+$"
+			}]
+		},
+		"supports": {
+			"patterns": [{
+				"name": "support.constant.ti-basic",
+				"match": "(π|e|i)"
+			},
+			{
+				"name": "support.variable.ti-basic",
+				"match": "((?<=→)([A-Z]|θ))|(∟([A-Z]|[0-9]|θ){1,5})|(\\[[A-J]])|(Pic[0-9])|(GDB[0-9])"
+			}]
+		}
+	},
+	"scopeName": "source.tibasic"
+}
