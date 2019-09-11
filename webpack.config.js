@@ -1,4 +1,5 @@
-//@ts-check
+// @ts-nocheck
+
 
 'use strict';
 
@@ -32,14 +33,6 @@ const config = {
         use: [
           {
             loader: 'ts-loader'
-          }
-        ]
-      },
-      {
-        test: /\.wasm$/,
-        use: [
-          {
-            loader: 'wasm-loader'
           }
         ]
       }

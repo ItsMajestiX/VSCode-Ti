@@ -34,7 +34,7 @@
 		"constants": {
 			"patterns": [{
 				"name": "constant.numeric.ti-basic",
-				"match": "^-?\\d*\\.?\\d+$"
+				"match": "\\b(^-?\\d*\\.?\\d+$)\\b"
 			}]
 		},
 		"supports": {
@@ -44,7 +44,7 @@
 			},
 			{
 				"name": "support.variable.ti-basic",
-				"match": "((?<=→)([A-Z]|θ))|(∟([A-Z]|[0-9]|θ){1,5})|(\\[[A-J]])|(Pic[0-9])|(GDB[0-9])"
+				"match": "(((?<=→)([A-Z]|θ))|(∟([A-Z]|[0-9]|θ){1,5})|(\\[[A-J]])|(Pic[0-9])|(GDB[0-9])"
 			}]
 		}
 	},
