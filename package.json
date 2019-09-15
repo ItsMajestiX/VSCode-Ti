@@ -75,5 +75,7 @@
         "webpack": "^4.39.3",
         "webpack-cli": "^3.3.7"
     },
-    "extensionDependencies": ["ms-vscode.cpptools"]
+    "extensionDependencies": [
+        "ms-vscode.cpptools"
+    ]
 }
