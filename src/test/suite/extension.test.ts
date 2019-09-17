@@ -5,7 +5,7 @@ import { before } from 'mocha';
 // as well as import your extension to test it
 import * as vscode from 'vscode';
 
-import Module from '../../tivars_test/tivars_test';
+const Module = require('../../tivars_test/tivars_test');
 
 // import * as myExtension from '../extension';
 
@@ -21,7 +21,9 @@ suite('Extension Test Suite', () => {
 
 	//https://github.com/TI-Planet/zText/blob/master/generator.js
 	test("WASM test", () => {
-		const testItem = Module.TIVarFile.createNew(Module.TIVarType.createFromName("Program"), 'test', Module.TIModel.createFromName('CE'));
+		const varType = Module.TIVarType.createFromName("Program");
+		const model = Module.TIModel.createFromName("84+CE");
+		const testItem = Module.TIVarFile.createNew(varType, "test", model);
 		vscode.window.showInformationMessage(typeof testItem);
 	});
 });
