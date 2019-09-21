@@ -6,12 +6,31 @@
     "publisher": "ItsMajestiX",
     "license": "MIT",
     "engines": {
-        "vscode": "^1.37.0"
+        "vscode": "^1.38.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "main": "./dist/extension",
+    "activationEvents": [
+        "onCommand:disassembleBasic"
+    ],
     "contributes": {
+        "commands": [
+            {
+                "command": "vscode-ti.disassembleBasic",
+                "title": "Disassemble .8xp",
+                "enablement": "resourceExtname == .8xp"
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "vscode-ti.disassembleBasic",
+                    "when": "resourceExtname == .8xp"
+                }
+            ]
+        },
         "languages": [
             {
                 "id": "ti-basic",
@@ -77,5 +96,8 @@
     },
     "extensionDependencies": [
         "ms-vscode.cpptools"
-    ]
+    ],
+    "dependencies": {
+        "vscode-uri": "^2.0.3"
+    }
 }
