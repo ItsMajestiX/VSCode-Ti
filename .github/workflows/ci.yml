@@ -24,8 +24,8 @@ jobs:
       - name: npm install, test-compile, and test
         run: |
           npm install --only=dev && npm install
-          npm test-compile
-          npm test
+          npm run test-compile
+          npm run test
    
   package:
     name: Package to .vsix and upload
