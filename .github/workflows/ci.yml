@@ -12,6 +12,13 @@ jobs:
        
     steps:
       - uses: actions/checkout@v1
+      
+      - name: Download xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install xvfb
+        if: matrix.os == 'ubuntu-latest'
+          
       - name: Download node.js 10.11.0 (version used in VSCode)
         uses: actions/setup-node@v1
         with:
@@ -25,7 +32,8 @@ jobs:
 
       - name: npm install, test-compile, and test
         run: |
-          npm install --only=dev && npm install
+          npm install --only=dev
+          npm install
           npm run test-compile
           npm run test
    
