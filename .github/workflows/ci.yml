@@ -23,14 +23,9 @@ jobs:
 
       - name: npm install, test-compile, and test
         run: |
-          npm install && npm install --only=dev
+          npm install --only=dev && npm install
           npm test-compile
           npm test
-
-      - name: Create .vsix file
-        run: |
-          npm install -g vsce
-          vsce package
    
   package:
     name: Package to .vsix and upload
@@ -52,11 +47,13 @@ jobs:
     - name: Create .vsix file
       run: |
         vsce package
+        mkdir artifacts
+        mv *.vsix artifacts/
           
     - name: Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: vscode-ti.vsix
-        path: vscode-ti.vsix
+        name: vscode-ti
+        path: artifacts
         
         
