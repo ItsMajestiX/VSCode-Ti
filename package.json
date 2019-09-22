@@ -78,21 +78,20 @@
         "pretest": "npm run compile",
         "test-compile": "tsc -p ./",
         "test": "node ./out/test/runTest.js",
-        "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "devDependencies": {
         "@types/glob": "^7.1.1",
         "@types/mocha": "^5.2.6",
-        "@types/node": "^10.14.17",
+        "@types/node": "^10.14.18",
         "@types/vscode": "^1.38.0",
         "glob": "^7.1.4",
         "mocha": "^6.1.4",
-        "ts-loader": "^6.0.4",
-        "tslint": "^5.19.0",
-        "typescript": "^3.6.2",
+        "ts-loader": "^6.1.2",
+        "tslint": "^5.20.0",
+        "typescript": "^3.6.3",
         "vscode-test": "^1.0.0-next.0",
-        "webpack": "^4.39.3",
-        "webpack-cli": "^3.3.7"
+        "webpack": "^4.40.2",
+        "webpack-cli": "^3.3.9"
     },
     "extensionDependencies": [
         "ms-vscode.cpptools"
