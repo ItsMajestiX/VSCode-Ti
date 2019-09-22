@@ -11,7 +11,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
        
     steps:
-      - uses: actions/checkout@v 
+      - uses: actions/checkout@v1
       - name: Download node.js 10.11.0 (version used in VSCode)
         uses: actions/setup-node@v1
         with:
