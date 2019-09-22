@@ -44,14 +44,14 @@ jobs:
         npm install && npm install --only=dev
         npm install -g vsce
           
-      - name: Create .vsix file
-        run: |
-          vsce package
+    - name: Create .vsix file
+      run: |
+        vsce package
           
-      - name: Upload artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: vscode-ti.vsix
-          path: vscode-ti.vsix
+    - name: Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: vscode-ti.vsix
+        path: vscode-ti.vsix
         
         
