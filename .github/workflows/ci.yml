@@ -1,0 +1,57 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    name: Build and test with os ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+       
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download node.js 10.11.0 (version used in VSCode)
+        uses: actions/setup-node@v1
+        with:
+          version: 10.11.0
+
+      - name: npm install, test-compile, and test
+        run: |
+          npm install && npm install --only=dev
+          npm test-compile
+          npm test
+
+      - name: Create .vsix file
+        run: |
+          npm install -g vsce
+          vsce package
+   
+  package:
+    name: Package to .vsix and upload
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Download node.js 10.11.0 (version used in VSCode)
+      uses: actions/setup-node@v1
+      with:
+        version: 10.11.0
+          
+    - name: npm install deps and vsce
+      run: |
+        npm install && npm install --only=dev
+        npm install -g vsce
+          
+      - name: Create .vsix file
+        run: |
+          vsce package
+          
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: vscode-ti.vsix
+          path: vscode-ti.vsix
+        
+        
