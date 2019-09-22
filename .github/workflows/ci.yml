@@ -16,6 +16,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           version: 10.11.0
+          
+      - name: Start xvfb
+        run: /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+        if: ${{ matrix.os }} == ubuntu-latest
 
       - name: npm install, test-compile, and test
         run: |
@@ -31,6 +35,7 @@ jobs:
   package:
     name: Package to .vsix and upload
     runs-on: ubuntu-latest
+    needs: test
     
     steps:
     - uses: actions/checkout@v1
@@ -41,7 +46,7 @@ jobs:
           
     - name: npm install deps and vsce
       run: |
-        npm install && npm install --only=dev
+        npm install --only=dev && npm install
         npm install -g vsce
           
     - name: Create .vsix file
