@@ -28,7 +28,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         
       - name: Run tests (no xvfb, we have a gui)
-        run: npm run tests
+        run: npm run test
         if: matrix.os != 'ubuntu-latest'
    
   package:
