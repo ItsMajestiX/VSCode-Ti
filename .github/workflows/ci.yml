@@ -21,6 +21,7 @@ jobs:
         run: |
           npm install --only=dev
           npm install
+          npm install escape-string-regexp
           npm run test-compile
           
       - name: Run tests with xvfb-run
