@@ -16,16 +16,20 @@ jobs:
         uses: actions/setup-node@v1
         with:
           version: 10.11.0
-          
-      - name: Start xvfb
-        run: /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-        if: matrix.os == 'ubuntu-latest'
 
-      - name: npm install, test-compile, and test
+      - name: Install deps and compile
         run: |
-          npm install --only=dev && npm install
-          npm test-compile
-          npm test
+          npm install --only=dev
+          npm install
+          npm run test-compile
+          
+      - name: Run tests with xvfb-run
+        run: xvfb-run npm run test
+        if: matrix.os == 'ubuntu-latest'
+        
+      - name: Run tests (no xvfb, we have a gui)
+        run: npm run tests
+        if: matrix.os != 'ubuntu-latest'
    
   package:
     name: Package to .vsix and upload
