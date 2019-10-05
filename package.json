@@ -76,7 +76,7 @@
         "webpack-dev": "webpack --mode development --watch",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile",
-        "test-compile": "tsc -p ./",
+        "test-compile": "node testprerun.js",
         "test": "node ./out/test/runTest.js"
     },
     "devDependencies": {
@@ -84,8 +84,10 @@
         "@types/mocha": "^5.2.6",
         "@types/node": "^10.14.18",
         "@types/vscode": "^1.38.0",
+        "copy-webpack-plugin": "^5.0.4",
         "glob": "^7.1.4",
         "mocha": "^6.1.4",
+        "node-cmd": "^3.0.0",
         "ts-loader": "^6.1.2",
         "tslint": "^5.20.0",
         "typescript": "^3.6.3",
@@ -97,6 +99,7 @@
         "ms-vscode.cpptools"
     ],
     "dependencies": {
+        "filenamify": "^4.1.0",
         "vscode-uri": "^2.0.3"
     }
 }

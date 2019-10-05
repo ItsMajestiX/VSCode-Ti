@@ -4,9 +4,16 @@
 'use strict';
 
 const path = require('path');
+const CopyPlugin = require("copy-webpack-plugin")
 
 /**@type {import('webpack').Configuration}*/
 const config = {
+  plugins: [
+    new CopyPlugin([
+      { from: 'src/tivars_test/tivars_test.wasm' }
+    ])
+  ],
+
   target: 'node', // vscode extensions run in a Node.js-context 📖 -> https://webpack.js.org/configuration/node/
 
   entry: './src/extension.ts', // the entry point of this extension, 📖 -> https://webpack.js.org/configuration/entry-context/

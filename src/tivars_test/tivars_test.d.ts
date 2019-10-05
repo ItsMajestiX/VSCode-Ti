@@ -1,4 +1,5 @@
 export namespace Module {
+    function FS_createDataFile(directory: string, filename: string, data: Buffer | ArrayBuffer | Uint8Array | string, flag1: boolean, flag2: boolean): any;
     enum TIFeatureFlags
     {
         has82things  = 0b00000001,
