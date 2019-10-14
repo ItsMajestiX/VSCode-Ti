@@ -71,8 +71,8 @@ export namespace Module {
 
         getRawContent(): any
 
-        getReadableContent(options: any): undefined
-        getReadableContent(): undefined
+        getReadableContent(options: any): string
+        getReadableContent(): string
 
         saveVarToFile(directory: string, name: string): string
         saveVarToFile(): string

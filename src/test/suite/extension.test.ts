@@ -5,7 +5,7 @@ import { before } from 'mocha';
 // as well as import your extension to test it
 import * as vscode from 'vscode';
 
-const Module = require('../../tivars_test/tivars_test');
+import Module from '../../tivars_test/tivars_test.js';
 
 // import * as myExtension from '../extension';
 
