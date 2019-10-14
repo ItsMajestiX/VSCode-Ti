@@ -17,18 +17,23 @@ jobs:
         with:
           version: 10.11.0
 
-      - name: Install deps and compile
+      - name: Install deps and compile (use pipe)
         run: |
           npm install --only=dev
           npm install
           npm run test-compile
+        if: matrix.os != 'windows-latest'
+      
+      - name: Install deps and compile (use cmd)
+        run: npm install --only=dev && npm install && npm run test-compile
+        if: matrix.os == 'windows-latest'
           
       - name: Run tests with xvfb-run
         run: xvfb-run npm run test
         if: matrix.os == 'ubuntu-latest'
         
       - name: Run tests (no xvfb, we have a gui)
-        run: npm run tests
+        run: npm run test
         if: matrix.os != 'ubuntu-latest'
    
   package:
