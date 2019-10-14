@@ -15,7 +15,7 @@ jobs:
       - name: Download node.js 10.11.0 (version used in VSCode)
         uses: actions/setup-node@v1
         with:
-          version: 10.11.0
+          node-version: 10.11.0
 
       - name: Install deps and compile (use pipe)
         run: |
