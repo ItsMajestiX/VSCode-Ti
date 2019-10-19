@@ -59,10 +59,12 @@ jobs:
         npm install --only=dev
         npm install
         tsc
+        cp src/vsce out/vsce
         cd ..
           
     - name: Create .vsix file
       run: |
+        rm
         ./vscode-vsce/out/vsce package
         mkdir artifacts
         mv *.vsix artifacts/
