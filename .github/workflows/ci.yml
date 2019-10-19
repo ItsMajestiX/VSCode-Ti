@@ -56,6 +56,8 @@ jobs:
       run: |
         git clone https://github.com/ItsMajestiX/vscode-vsce.git
         cd vscode-vsce
+        npm install --only=dev
+        npm install
         tsc
         cd ..
           
