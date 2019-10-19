@@ -12,3 +12,4 @@ src/
 tsconfig.json
 webpack.config.js
 typings_custom
+vscode-vscode
