@@ -48,14 +48,20 @@ jobs:
       with:
         version: 10.11.0
           
-    - name: npm install deps and vsce
+    - name: npm install deps
       run: |
         npm install --only=dev && npm install
-        npm install -g vsce
+        
+    - name: Install vsce from my repo
+      run: |
+        git clone https://github.com/ItsMajestiX/vscode-vsce.git
+        cd vscode-vsce
+        tsc
+        cd ..
           
     - name: Create .vsix file
       run: |
-        vsce package
+        ./vscode-vsce/out/vsce package
         mkdir artifacts
         mv *.vsix artifacts/
           
