@@ -64,7 +64,6 @@ jobs:
           
     - name: Create .vsix file
       run: |
-        rm
         ./vscode-vsce/out/vsce package
         mkdir artifacts
         mv *.vsix artifacts/
