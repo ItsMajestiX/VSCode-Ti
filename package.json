@@ -4,9 +4,29 @@
     "description": "Adds support for Ti-BASIC, eZ80 assembly, and the CE-Toolchain to Visual Studio Code.",
     "version": "0.0.1",
     "publisher": "ItsMajestiX",
-    "license": "MIT",
+    "keywords": [
+        "TI-84+CE",
+        "ez80"
+    ],
+    "license": "GPL-3.0-or-later",
+    "readme": "readme.md",
+    "author": {
+        "name": "ItsMajestiX",
+        "url": "https://github.com/ItsMajestiX/"
+    },
+    "repository": {
+        "url": "https://github.com/ItsMajestiX/VSCode-Ti",
+        "type": "git"
+    },
+    "bugs": {
+        "url": "https://github.com/ItsMajestiX/VSCode-Ti/issues"
+    },
+    "contributors": [
+        "ItsMajestiX"
+    ],
+    "icon": "img/icon.png",
     "engines": {
-        "vscode": "^1.38.0"
+        "vscode": "^1.39.0"
     },
     "categories": [
         "Programming Languages"
@@ -14,7 +34,9 @@
     "main": "./dist/extension",
     "activationEvents": [
         "onCommand:vscode-ti.disassembleBasic",
-        "onCommand:vscode-ti.printDir"
+        "onCommand:vscode-ti.printDir",
+        "workspaceContains:**/*.8xp",
+        "workspaceContains:**/*.tibasic"
     ],
     "contributes": {
         "commands": [
@@ -24,8 +46,8 @@
                 "enablement": "resourceExtname == .8xp"
             },
             {
-                "command": "vscode-ti.printDir",
-                "title": "PWD (if found in production, submit bug notice)"
+                "command": "vscode-ti.disassembleBasicContext",
+                "title": "Disassemble .8xp"
             }
         ],
         "menus": {
@@ -33,9 +55,12 @@
                 {
                     "command": "vscode-ti.disassembleBasic",
                     "when": "resourceExtname == .8xp"
-                },
+                }
+            ],
+            "explorer/context": [
                 {
-                    "command": "vscode-ti.printDir"
+                    "command": "vscode-ti.disassembleBasicContext",
+                    "when": "resourceExtname == .8xp"
                 }
             ]
         },

@@ -8,10 +8,18 @@ export function activate(context: vscode.ExtensionContext) {
 	const Module = require('./tivars_test/tivars_test');
 	//Register commands and their variables
 	let filesLoaded:string[] = [];
-	let disassembleBasic = vscode.commands.registerCommand('vscode-ti.disassembleBasic', () => {
-		filesLoaded = commands.onDisassembleBasic(Module, filesLoaded);
+	let disassembleBasic = vscode.commands.registerTextEditorCommand('vscode-ti.disassembleBasic', (textEditor, edit) => {
+		vscode.workspace.fs.readFile(textEditor.document.uri).then((result) => {
+			filesLoaded = commands.disassembleBasic(result, textEditor.document.uri, Module, filesLoaded);
+		});
+	});
+	let disassembleBasicContext = vscode.commands.registerCommand('vscode-ti.disassembleBasicContext', (fileUri) => {
+		vscode.workspace.fs.readFile(fileUri).then((result) => {
+			filesLoaded = commands.disassembleBasic(result, fileUri, Module, filesLoaded);
+		});
 	});
 	context.subscriptions.push(disassembleBasic);
+	context.subscriptions.push(disassembleBasicContext);
 	//Handler to ask user to disassemble files
 	let windowChangeHandler = vscode.window.onDidChangeActiveTextEditor((event) => {
 		if (typeof event !== "undefined") {
