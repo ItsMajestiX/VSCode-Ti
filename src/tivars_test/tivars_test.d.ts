@@ -1,5 +1,7 @@
 export namespace Module {
     function FS_createDataFile(directory: string, filename: string, data: Buffer | ArrayBuffer | Uint8Array | string, flag1: boolean, flag2: boolean): any;
+    function FS_readFile(path: string, flag: object): Uint8Array;
+    function FS_writeFile(path: string, data: string | ArrayBufferView, opts: Object): void;
     enum TIFeatureFlags
     {
         has82things  = 0b00000001,

@@ -7187,7 +7187,7 @@ var __MONTH_DAYS_REGULAR = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; fun
     return _strftime(s, maxsize, format, tm); // no locale support yet
 }
 
-FS.staticInit(); Module["FS_createFolder"] = FS.createFolder; Module["FS_createPath"] = FS.createPath; Module["FS_createDataFile"] = FS.createDataFile; Module["FS_createPreloadedFile"] = FS.createPreloadedFile; Module["FS_createLazyFile"] = FS.createLazyFile; Module["FS_createLink"] = FS.createLink; Module["FS_createDevice"] = FS.createDevice; Module["FS_unlink"] = FS.unlink;;
+FS.staticInit(); Module["FS_createFolder"] = FS.createFolder; Module["FS_createPath"] = FS.createPath; Module["FS_createDataFile"] = FS.createDataFile; Module["FS_createPreloadedFile"] = FS.createPreloadedFile; Module["FS_createLazyFile"] = FS.createLazyFile; Module["FS_createLink"] = FS.createLink; Module["FS_createDevice"] = FS.createDevice; Module["FS_unlink"] = FS.unlink; Module["FS_readFile"] = FS.readFile; Module["FS_writeFile"] = FS.writeFile;;
 if (ENVIRONMENT_HAS_NODE) { var fs = require("fs"); var NODEJS_PATH = require("path"); NODEFS.staticInit(); };
 embind_init_charCodes();
 BindingError = Module['BindingError'] = extendError(Error, 'BindingError');;

@@ -34,7 +34,9 @@
     "main": "./dist/extension",
     "activationEvents": [
         "onCommand:vscode-ti.disassembleBasic",
-        "onCommand:vscode-ti.printDir",
+        "onCommand:vscode-ti.disassembleBasicContext",
+        "onCommand:vscode-ti.assembleBasic",
+        "onCommand:vscode-ti.assembleBasicContext",
         "workspaceContains:**/*.8xp",
         "workspaceContains:**/*.tibasic"
     ],
@@ -48,6 +50,15 @@
             {
                 "command": "vscode-ti.disassembleBasicContext",
                 "title": "Disassemble .8xp"
+            },
+            {
+                "command": "vscode-ti.assembleBasic",
+                "title": "Assemble .tibasic",
+                "enablement": "resourceExtname == .tibasic"
+            },
+            {
+                "command": "vscode-ti.assembleBasicContext",
+                "title": "Assemble .tibasic"
             }
         ],
         "menus": {
@@ -55,12 +66,20 @@
                 {
                     "command": "vscode-ti.disassembleBasic",
                     "when": "resourceExtname == .8xp"
+                },
+                {
+                    "command": "vscode-ti.assembleBasic",
+                    "when": "resourceExtname == .tibasic"
                 }
             ],
             "explorer/context": [
                 {
                     "command": "vscode-ti.disassembleBasicContext",
                     "when": "resourceExtname == .8xp"
+                },
+                {
+                    "command": "vscode-ti.assembleBasicContext",
+                    "when": "resourceExtname == .tibasic"
                 }
             ]
         },

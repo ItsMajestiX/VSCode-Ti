@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
 import * as commands from "./commands";
-
 export function activate(context: vscode.ExtensionContext) {
 	//Use commonjs, or else crash (maybe)
 	//Note that we don't add .js at the end, that also causes crash (maybe)
@@ -10,16 +9,29 @@ export function activate(context: vscode.ExtensionContext) {
 	let filesLoaded:string[] = [];
 	let disassembleBasic = vscode.commands.registerTextEditorCommand('vscode-ti.disassembleBasic', (textEditor, edit) => {
 		vscode.workspace.fs.readFile(textEditor.document.uri).then((result) => {
-			filesLoaded = commands.disassembleBasic(result, textEditor.document.uri, Module, filesLoaded);
+			commands.disassembleBasic(result, textEditor.document.uri, Module);
 		});
 	});
 	let disassembleBasicContext = vscode.commands.registerCommand('vscode-ti.disassembleBasicContext', (fileUri) => {
 		vscode.workspace.fs.readFile(fileUri).then((result) => {
-			filesLoaded = commands.disassembleBasic(result, fileUri, Module, filesLoaded);
+			commands.disassembleBasic(result, fileUri, Module);
 		});
 	});
 	context.subscriptions.push(disassembleBasic);
 	context.subscriptions.push(disassembleBasicContext);
+	let assembleBasic = vscode.commands.registerTextEditorCommand('vscode-ti.assembleBasic', (textEditor, edit) => {
+		vscode.workspace.fs.readFile(textEditor.document.uri).then((result) => {
+			commands.assembleBasic(result, textEditor.document.uri, Module);
+		});
+	});
+	let assembleBasicContext = vscode.commands.registerCommand('vscode-ti.assembleBasicContext', (fileUri) => {
+		vscode.workspace.fs.readFile(fileUri).then((result) => {
+			commands.assembleBasic(result, fileUri, Module);
+		});
+	});
+	context.subscriptions.push(disassembleBasic);
+	context.subscriptions.push(disassembleBasicContext);
+	//Handler to ask user to disassemble files
 	//Handler to ask user to disassemble files
 	let windowChangeHandler = vscode.window.onDidChangeActiveTextEditor((event) => {
 		if (typeof event !== "undefined") {
