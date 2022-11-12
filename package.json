@@ -145,7 +145,7 @@
         "typescript": "^3.6.4",
         "vscode-test": "^1.0.0-next.0",
         "webpack": "^4.41.2",
-        "webpack-cli": "^3.3.9"
+        "webpack-cli": "^3.3.12"
     },
     "extensionDependencies": [
         "ms-vscode.cpptools"
